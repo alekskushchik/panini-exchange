@@ -14,4 +14,8 @@ export default defineConfig({
   server: {
     publicDir: './public',
   },
+  output: {
+    target: 'web',
+    distDirectory: './dist',
+  },
 });
