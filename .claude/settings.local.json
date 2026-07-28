@@ -4,7 +4,9 @@
       "Bash(python -c \"import json; d=json.load\\(open\\(r'C:\\\\Users\\\\kushchyk\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-kushchyk-Downloads-panini-exchange\\\\9a6f0a8c-2284-493e-ac96-684bcda89ffb\\\\scratchpad\\\\batch_e.json'\\)\\); print\\(len\\(d\\)\\); nulls=sum\\(1 for x in d if x['stats'] is None\\); print\\('null stats:', nulls\\)\")",
       "Bash(node -e ' *)",
       "Bash(python -c \"import json; d=json.load\\(open\\(r'C:\\\\Users\\\\kushchyk\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-kushchyk-Downloads-panini-exchange\\\\9a6f0a8c-2284-493e-ac96-684bcda89ffb\\\\scratchpad\\\\batch_d.json', encoding='utf-8'\\)\\); print\\(len\\(d\\)\\); print\\(sum\\(1 for x in d if x['stats'] is None\\)\\)\")",
-      "PowerShell($d = Get-Content \"C:\\\\Users\\\\kushchyk\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-kushchyk-Downloads-panini-exchange\\\\9a6f0a8c-2284-493e-ac96-684bcda89ffb\\\\scratchpad\\\\batch_e.json\" -Raw | ConvertFrom-Json; Write-Output \"Total: $\\($d.Count\\)\"; $nulls = \\($d | Where-Object { $_.stats -eq $null }\\).Count; Write-Output \"Null stats: $nulls\")"
+      "PowerShell($d = Get-Content \"C:\\\\Users\\\\kushchyk\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-kushchyk-Downloads-panini-exchange\\\\9a6f0a8c-2284-493e-ac96-684bcda89ffb\\\\scratchpad\\\\batch_e.json\" -Raw | ConvertFrom-Json; Write-Output \"Total: $\\($d.Count\\)\"; $nulls = \\($d | Where-Object { $_.stats -eq $null }\\).Count; Write-Output \"Null stats: $nulls\")",
+      "Bash(node *)",
+      "Bash(grep -n \"image:$\" src/data/cardSet.ts)"
     ]
   }
 }

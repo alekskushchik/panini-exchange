@@ -9,6 +9,7 @@ let globalCardIndex = 1;
 const folderOrder = [
   'Golden Baller',
   // Країни будуть додані в алфавітному порядку
+  'Contenders',
   'Special 2',
   'Special 1', 
   'Ultra Rare',
