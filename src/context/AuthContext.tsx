@@ -2,11 +2,9 @@ import {
   createContext,
   useContext,
   useEffect,
-  useMemo,
   useState,
   type ReactNode,
 } from 'react';
-import { initializeApp, type FirebaseApp } from 'firebase/app';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -15,7 +13,8 @@ import {
   signOut,
   type User as FirebaseUser,
 } from 'firebase/auth';
-import { firebaseConfig, isFirebaseConfigured } from '../config/firebaseConfig';
+import { firebaseApp } from '../config/firebase';
+import { isFirebaseConfigured } from '../config/firebaseConfig';
 
 export interface AppUser {
   uid: string;
@@ -57,35 +56,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AppUser | null>(null);
   const [loading, setLoading] = useState(isFirebaseConfigured);
 
-  const app: FirebaseApp | null = useMemo(
-    () => (isFirebaseConfigured ? initializeApp(firebaseConfig) : null),
-    [],
-  );
-
   useEffect(() => {
-    if (!app) return;
-    const auth = getAuth(app);
+    if (!firebaseApp) return;
+    const auth = getAuth(firebaseApp);
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser ? toAppUser(firebaseUser) : null);
       setLoading(false);
     });
     return unsubscribe;
-  }, [app]);
+  }, []);
 
   const signInWithGoogle = async () => {
-    if (!app) {
+    if (!firebaseApp) {
       console.warn(
         'Firebase is not configured — add PUBLIC_FIREBASE_* vars to .env.local',
       );
       return;
     }
-    const auth = getAuth(app);
+    const auth = getAuth(firebaseApp);
     await signInWithPopup(auth, new GoogleAuthProvider());
   };
 
   const signOutUser = async () => {
-    if (!app) return;
-    await signOut(getAuth(app));
+    if (!firebaseApp) return;
+    await signOut(getAuth(firebaseApp));
   };
 
   const value: AuthContextValue = {
