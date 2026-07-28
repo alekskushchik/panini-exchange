@@ -17,6 +17,6 @@ export default defineConfig({
   output: {
     target: 'web',
     distDirectory: './dist',
-    assetPrefix: '/panini-exchange/',
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/panini-exchange/' : '/',
   },
 });
