@@ -17,5 +17,6 @@ export default defineConfig({
   output: {
     target: 'web',
     distDirectory: './dist',
+    assetPrefix: '/panini-exchange/',
   },
 });
