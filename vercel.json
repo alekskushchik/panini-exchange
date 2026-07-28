@@ -4,7 +4,6 @@
   "installCommand": "npm ci",
   "framework": "react",
   "outputDirectory": "dist",
-  "public": true,
   "regions": ["iad1"],
   "env": {
     "VITE_FIREBASE_API_KEY": "@firebase_api_key",
