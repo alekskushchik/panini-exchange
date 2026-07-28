@@ -406,3 +406,93 @@ body {
   min-width: 150px;
   text-align: center;
 }
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .checklist__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 1rem 0.75rem 2rem;
+  }
+
+  .app__header {
+    flex-wrap: wrap;
+  }
+
+  .app__header h1 {
+    font-size: 1.05rem;
+  }
+
+  .checklist__controls {
+    gap: 0.5rem;
+  }
+
+  .status-filter {
+    flex-wrap: wrap;
+  }
+
+  .team-filter {
+    flex: 1 1 100%;
+  }
+
+  .checklist__grid {
+    gap: 0.9rem;
+  }
+
+  .card-tile__number {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .card-tile__title {
+    font-size: 0.8rem;
+  }
+
+  .card-tile__category {
+    font-size: 0.65rem;
+  }
+
+  .card-tile__content {
+    padding: 0.6rem;
+  }
+
+  .card-tile__btn-control {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .checklist__pagination {
+    gap: 0.5rem;
+  }
+
+  .pagination__info {
+    min-width: 0;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .checklist__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .app__header-actions {
+    gap: 0.35rem;
+  }
+
+  .auth-button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
