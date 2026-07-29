@@ -8,7 +8,7 @@ import { StatusFilterBar } from './StatusFilterBar';
 import { ProgressBar } from './ProgressBar';
 
 const ALL_TEAMS = 'all';
-const CARDS_PER_PAGE = 9;
+const CARDS_PER_PAGE = 18;
 
 export function Checklist() {
   const { user } = useAuth();
