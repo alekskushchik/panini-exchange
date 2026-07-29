@@ -188,6 +188,97 @@ body {
   color: var(--text);
 }
 
+.clear-collection-btn {
+  margin-left: auto;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: #c2410c;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.clear-collection-btn:hover:not(:disabled) {
+  border-color: #c2410c;
+  background: rgba(194, 65, 12, 0.1);
+}
+
+.clear-collection-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Confirm modal */
+
+.confirm-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 100;
+}
+
+.confirm-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.confirm-modal__title {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.confirm-modal__message {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.confirm-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.confirm-modal__btn {
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+
+.confirm-modal__btn--cancel {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.confirm-modal__btn--cancel:hover {
+  border-color: var(--accent);
+}
+
+.confirm-modal__btn--confirm {
+  background: #c2410c;
+  color: #fff;
+  border-color: #c2410c;
+}
+
+.confirm-modal__btn--confirm:hover {
+  background: #a3350a;
+}
+
 /* Card grid */
 
 .checklist__grid {
@@ -463,6 +554,11 @@ body {
   }
 
   .team-filter {
+    flex: 1 1 100%;
+  }
+
+  .clear-collection-btn {
+    margin-left: 0;
     flex: 1 1 100%;
   }
 

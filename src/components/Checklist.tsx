@@ -6,16 +6,18 @@ import { useCollection } from '../hooks/useCollection';
 import { CardTile } from './CardTile';
 import { StatusFilterBar } from './StatusFilterBar';
 import { ProgressBar } from './ProgressBar';
+import { ConfirmModal } from './ConfirmModal';
 
 const ALL_TEAMS = 'all';
 const CARDS_PER_PAGE = 18;
 
 export function Checklist() {
   const { user } = useAuth();
-  const { collection, increment, decrement } = useCollection(user?.uid ?? null);
+  const { collection, increment, decrement, clearAll } = useCollection(user?.uid ?? null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [teamFilter, setTeamFilter] = useState<string>(ALL_TEAMS);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showClearConfirm, setShowClearConfirm] = useState(false);
 
   const teams = useMemo(
     () => Array.from(new Set(cardSet.map((c) => c.team))).sort(),
@@ -95,7 +97,28 @@ export function Checklist() {
             </option>
           ))}
         </select>
+        <button
+          type="button"
+          className="clear-collection-btn"
+          onClick={() => setShowClearConfirm(true)}
+          disabled={ownedCount === 0}
+        >
+          Очистити колекцію
+        </button>
       </div>
+
+      {showClearConfirm && (
+        <ConfirmModal
+          title="Очистити колекцію?"
+          message="Усі позначені картки будуть скинуті. Цю дію не можна скасувати."
+          confirmLabel="Очистити"
+          onConfirm={() => {
+            clearAll();
+            setShowClearConfirm(false);
+          }}
+          onCancel={() => setShowClearConfirm(false)}
+        />
+      )}
 
       <div className="checklist__grid">
         {paginatedCards.map((card) => (

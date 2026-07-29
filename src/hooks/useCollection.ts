@@ -115,5 +115,9 @@ export function useCollection(uid: string | null) {
     });
   }, []);
 
-  return { collection, increment, decrement, setCount };
+  const clearAll = useCallback(() => {
+    setCollection({});
+  }, []);
+
+  return { collection, increment, decrement, setCount, clearAll };
 }
