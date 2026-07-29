@@ -7,7 +7,14 @@
       "PowerShell($d = Get-Content \"C:\\\\Users\\\\kushchyk\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-kushchyk-Downloads-panini-exchange\\\\9a6f0a8c-2284-493e-ac96-684bcda89ffb\\\\scratchpad\\\\batch_e.json\" -Raw | ConvertFrom-Json; Write-Output \"Total: $\\($d.Count\\)\"; $nulls = \\($d | Where-Object { $_.stats -eq $null }\\).Count; Write-Output \"Null stats: $nulls\")",
       "Bash(node *)",
       "Bash(grep -n \"image:$\" src/data/cardSet.ts)",
-      "Bash(pkill -f \"rsbuild dev\")"
+      "Bash(pkill -f \"rsbuild dev\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git checkout *)",
+      "Bash(npx tsc *)",
+      "Bash(nohup npm run dev)",
+      "Read(//private/tmp/**)"
     ]
   }
 }
