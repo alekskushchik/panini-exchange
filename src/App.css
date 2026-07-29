@@ -399,12 +399,37 @@ body {
   cursor: not-allowed;
 }
 
-.pagination__info {
+.pagination__pages {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pagination__btn--page {
+  width: 36px;
+  height: 36px;
   font-size: 0.9rem;
+}
+
+.pagination__btn--active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.pagination__btn--active:hover:not(:disabled) {
+  color: #fff;
+  box-shadow: none;
+}
+
+.pagination__ellipsis {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-muted);
-  font-weight: 500;
-  min-width: 150px;
-  text-align: center;
+  font-weight: 600;
 }
 
 /* Responsive */
@@ -473,10 +498,17 @@ body {
 
   .checklist__pagination {
     gap: 0.5rem;
+    flex-wrap: wrap;
   }
 
-  .pagination__info {
-    min-width: 0;
+  .pagination__pages {
+    gap: 0.25rem;
+  }
+
+  .pagination__btn--page,
+  .pagination__ellipsis {
+    width: 30px;
+    height: 30px;
     font-size: 0.8rem;
   }
 }

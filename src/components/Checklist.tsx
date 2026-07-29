@@ -56,6 +56,21 @@ export function Checklist() {
     setCurrentPage(Math.max(1, Math.min(page, totalPages)));
   };
 
+  const pageNumbers = useMemo(() => {
+    const pages: (number | '…')[] = [];
+    const siblingCount = 1;
+    const start = Math.max(2, currentPage - siblingCount);
+    const end = Math.min(totalPages - 1, currentPage + siblingCount);
+
+    pages.push(1);
+    if (start > 2) pages.push('…');
+    for (let page = start; page <= end; page++) pages.push(page);
+    if (end < totalPages - 1) pages.push('…');
+    if (totalPages > 1) pages.push(totalPages);
+
+    return pages;
+  }, [currentPage, totalPages]);
+
   // Reset to page 1 when filters change
   useMemo(() => {
     setCurrentPage(1);
@@ -108,9 +123,27 @@ export function Checklist() {
           >
             ←
           </button>
-          <span className="pagination__info">
-            Сторінка {currentPage} з {totalPages}
-          </span>
+          <div className="pagination__pages">
+            {pageNumbers.map((page, index) =>
+              page === '…' ? (
+                <span key={`ellipsis-${index}`} className="pagination__ellipsis">
+                  …
+                </span>
+              ) : (
+                <button
+                  key={page}
+                  className={`pagination__btn pagination__btn--page${
+                    page === currentPage ? ' pagination__btn--active' : ''
+                  }`}
+                  onClick={() => handlePageChange(page)}
+                  aria-label={`Сторінка ${page}`}
+                  aria-current={page === currentPage ? 'page' : undefined}
+                >
+                  {page}
+                </button>
+              ),
+            )}
+          </div>
           <button
             className="pagination__btn"
             onClick={() => handlePageChange(currentPage + 1)}
