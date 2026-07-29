@@ -5,24 +5,28 @@ const assetsDir = './public/assets';
 const cardSet = [];
 let globalCardIndex = 1;
 
+// Папки, які повністю виключені з чекліста
+const excludedFolders = ['Limited Edition - Panini Hologram'];
+
 // Визначити порядок папок
 const folderOrder = [
   'Golden Baller',
   // Країни будуть додані в алфавітному порядку
   'Contenders',
   'Special 2',
-  'Special 1', 
+  'Special 1',
   'Ultra Rare',
   'Official Mascot',
   'Eternos 22',
   'Limited Edition',
-  'FIFA World Cup Master  (Dream Box Exclusive)'
+  'FIFA World Cup Master  (Dream Box Exclusive)',
+  'Momentum'
 ];
 
 // Get all team directories
 let allTeams = fs.readdirSync(assetsDir).filter(f => {
   const fullPath = path.join(assetsDir, f);
-  return fs.statSync(fullPath).isDirectory();
+  return fs.statSync(fullPath).isDirectory() && !excludedFolders.includes(f);
 });
 
 // Відділити країни від спеціальних наборів
