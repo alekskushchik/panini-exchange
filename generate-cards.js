@@ -1,3 +1,9 @@
+// NOTE: this script is not currently wired into the build. cardSet.ts is the
+// source of truth and is maintained by hand/ad-hoc scripts directly against
+// that file. This generator is kept only as a rough reference for the
+// folder -> team ordering logic; it writes to cardSet.json, which no longer
+// exists in the repo.
+
 import fs from 'fs';
 import path from 'path';
 
@@ -6,12 +12,16 @@ const cardSet = [];
 let globalCardIndex = 1;
 
 // Папки, які повністю виключені з чекліста
-const excludedFolders = ['Limited Edition - Panini Hologram'];
+const excludedFolders = [];
 
 // Визначити порядок папок
 const folderOrder = [
   'Golden Baller',
-  // Країни будуть додані в алфавітному порядку
+  // Країни будуть додані в алфавітному порядку.
+  // "Upgrade Edition" is intentionally left out of this list — it's a
+  // special set but has no dedicated position here, so it falls into the
+  // alphabetical "countries" bucket below and sorts between "United States"
+  // and "Uruguay", matching the real order in cardSet.ts.
   'Contenders',
   'Special 2',
   'Special 1',
@@ -19,7 +29,7 @@ const folderOrder = [
   'Official Mascot',
   'Eternos 22',
   'Limited Edition',
-  'FIFA World Cup Master  (Dream Box Exclusive)',
+  'FIFA World Cup Master (Dream Box Exclusive)',
   'Momentum'
 ];
 
