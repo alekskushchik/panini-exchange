@@ -11,17 +11,10 @@ const assetsDir = './public/assets';
 const cardSet = [];
 let globalCardIndex = 1;
 
-// Папки, які повністю виключені з чекліста
-const excludedFolders = [];
-
 // Визначити порядок папок
 const folderOrder = [
   'Golden Baller',
   // Країни будуть додані в алфавітному порядку.
-  // "Upgrade Edition" is intentionally left out of this list — it's a
-  // special set but has no dedicated position here, so it falls into the
-  // alphabetical "countries" bucket below and sorts between "United States"
-  // and "Uruguay", matching the real order in cardSet.ts.
   'Contenders',
   'Special 2',
   'Special 1',
@@ -30,13 +23,14 @@ const folderOrder = [
   'Eternos 22',
   'Limited Edition',
   'FIFA World Cup Master (Dream Box Exclusive)',
-  'Momentum'
+  'Momentum',
+  'Upgrade Edition'
 ];
 
 // Get all team directories
 let allTeams = fs.readdirSync(assetsDir).filter(f => {
   const fullPath = path.join(assetsDir, f);
-  return fs.statSync(fullPath).isDirectory() && !excludedFolders.includes(f);
+  return fs.statSync(fullPath).isDirectory();
 });
 
 // Відділити країни від спеціальних наборів
@@ -62,7 +56,7 @@ orderedTeams.forEach(team => {
     console.warn(`Папка не знайдена: ${team}`);
     return;
   }
-  
+
   const files = fs.readdirSync(teamPath)
     .filter(f => f.endsWith('.jpg') || f.endsWith('.png'))
     .sort();
@@ -70,7 +64,7 @@ orderedTeams.forEach(team => {
   files.forEach((file) => {
     const playerName = file.replace(/\.\w+$/, '');
     const uniqueId = `card-${globalCardIndex}`;
-    
+
     cardSet.push({
       id: uniqueId,
       number: globalCardIndex,
@@ -79,7 +73,7 @@ orderedTeams.forEach(team => {
       rarity: 'base',
       image: `/assets/${team}/${file}`
     });
-    
+
     globalCardIndex++;
   });
 });
